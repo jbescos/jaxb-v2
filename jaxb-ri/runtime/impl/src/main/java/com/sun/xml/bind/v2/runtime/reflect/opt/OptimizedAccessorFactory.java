@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 1997-2017 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997-2021 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -209,6 +209,9 @@ public abstract class OptimizedAccessorFactory {
             logger.log(Level.INFO,"failed to load an optimized Accessor",e);
         } catch (SecurityException e) {
             logger.log(Level.INFO,"failed to load an optimized Accessor",e);
+        } catch (ClassCastException e) {
+            logger.log(Level.FINE,"failed to cast optimized Accessor " +
+                    "created by repackaged jaxb "+opt,e);
         }
         return null;
     }
